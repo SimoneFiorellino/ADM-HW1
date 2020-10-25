@@ -58,8 +58,7 @@ def is_leap(year):
     leap = False
     
     # Write your logic here
-    if year%4==0 and (year%100!=0 or year%400==0):
-        leap = True
+    
     return leap
 
 year = int(input())
@@ -320,6 +319,8 @@ for i in range(thickness):
 
 #Text Wrap
 
+import textwrap
+
 def wrap(string, max_width):
     answer=""
     size=len(string)-max_width
@@ -433,6 +434,14 @@ if __name__ == '__main__':
 
 #Capitalize!
 
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
 # Complete the solve function below.
 def solve(s):
     s=s.split(" ")
@@ -440,7 +449,7 @@ def solve(s):
     for i in s:
         result+= i.capitalize() +" "
     return result
- 
+
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
@@ -508,7 +517,7 @@ if __name__ == '__main__':
  
  #No Idea!
  
- n = input()
+n = input()
 array = input().split()
 A = set(input().split())
 B = set(input().split())
@@ -1299,6 +1308,8 @@ print(re.sub(r'(?<=[a-zA-Z])[^a-zA-Z0-9]{1,}(?=[a-zA-Z])', " ",my_string))
 
 #XML 1 - Find the Score
 
+import sys
+import xml.etree.ElementTree as etree
 from html.parser import HTMLParser
 
 def get_attr_number(node):
@@ -1306,6 +1317,7 @@ def get_attr_number(node):
     for i in node.iter():
         count+=len(i.attrib)
     return count
+
 
 if __name__ == '__main__':
     sys.stdin.readline()
@@ -1316,9 +1328,12 @@ if __name__ == '__main__':
 
 #XML2 - Find the Maximum Depth
 
+import xml.etree.ElementTree as etree
+
 maxdepth = 0
 def depth(elem, level):
     global maxdepth
+    
     
     if level==maxdepth:
         maxdepth+=1
@@ -1326,7 +1341,8 @@ def depth(elem, level):
     if(len(elem)>0):
         for i in elem:
             depth(i, level+1)
-            
+
+
 if __name__ == '__main__':
     n = int(input())
     xml = ""
