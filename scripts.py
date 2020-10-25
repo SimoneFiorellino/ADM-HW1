@@ -61,6 +61,9 @@ def is_leap(year):
     if year%4==0 and (year%100!=0 or year%400==0):
         leap = True
     return leap
+
+year = int(input())
+print(is_leap(year))
     
     
 #Print Function
@@ -201,6 +204,11 @@ def swap_case(s):
             swap+=i.upper()
     return swap
 
+if __name__ == '__main__':
+    s = input()
+    result = swap_case(s)
+    print(result)
+
 #String Split and Join
 
 def split_and_join(line):
@@ -209,16 +217,32 @@ def split_and_join(line):
     line = "-".join(line)
     return line
 
+if __name__ == '__main__':
+    line = input()
+    result = split_and_join(line)
+    print(result)
+
 #What's Your Name?
 
 def print_full_name(a, b):
     return print(f'Hello {a} {b}! You just delved into python.')
+
+if __name__ == '__main__':
+    first_name = input()
+    last_name = input()
+    print_full_name(first_name, last_name)
 
 #Mutations
 
 def mutate_string(string, position, character):
     string = string[:position] + f'{character}' + string[position+1:]
     return string
+
+if __name__ == '__main__':
+    s = input()
+    i, c = input().split()
+    s_new = mutate_string(s, int(i), c)
+    print(s_new)
 
 #Find a string
 
@@ -228,6 +252,13 @@ def count_substring(string, sub_string):
         if sub_string==string[i:i+(len(sub_string))]:
             count+=1   
     return count
+
+if __name__ == '__main__':
+    string = input().strip()
+    sub_string = input().strip()
+    
+    count = count_substring(string, sub_string)
+    print(count)
 
 #String Validators
 
@@ -299,6 +330,11 @@ def wrap(string, max_width):
           count+=1
     answer += string[max_width*count:]
     return answer
+
+if __name__ == '__main__':
+    string, max_width = input(), int(input())
+    result = wrap(string, max_width)
+    print(result)
 
 #Designer Door Mat
 
@@ -373,6 +409,10 @@ def print_formatted(n):
         my_final+="\n"
 
     print(my_final)
+    
+if __name__ == '__main__':
+    n = int(input())
+    print_formatted(n)
 
 #Alphabet Rangoli
 
@@ -401,7 +441,18 @@ def solve(s):
         result+= i.capitalize() +" "
     return result
  
- 
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = solve(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
+
+    
 #The Minion Game
 
 def minion_game(string):
@@ -422,6 +473,10 @@ def minion_game(string):
         print(f"Stuart {Stuart}")
     else:
         print("Draw")
+        
+if __name__ == '__main__':
+    s = input()
+    minion_game(s)
 
 #Merge the Tools!
  
@@ -430,6 +485,9 @@ def merge_the_tools(string, k):
         print(''.join(dict.fromkeys(string[i:i+k])))
         #print("".join(set(string[i:i+div])))   #ordered version
  
+ if __name__ == '__main__':
+    string, k = input(), int(input())
+    merge_the_tools(string, k)
  
  #--->Sets
  
@@ -441,6 +499,12 @@ def merge_the_tools(string, k):
     for i in set(array):
         res+=i
     return res/ len(set(array))
+
+if __name__ == '__main__':
+    n = int(input())
+    arr = list(map(int, input().split()))
+    result = average(arr)
+    print(result)
  
  #No Idea!
  
@@ -939,6 +1003,10 @@ def fibonacci(n):
         
     return my_fibo
 
+if __name__ == '__main__':
+    n = int(input())
+    print(list(map(cube, fibonacci(n))))
+
 #--->Regex and Parsing challenges
 
 #Detect Floating Point Number
@@ -965,6 +1033,9 @@ for _ in range(int(input())):
 #Re.split()
 
 regex_pattern = r"\b[,.]"	# Do not delete 'r'.
+
+import re
+print("\n".join(re.split(regex_pattern, input())))
 
 #Group(), Groups() & Groupdict()
 
@@ -1236,6 +1307,13 @@ def get_attr_number(node):
         count+=len(i.attrib)
     return count
 
+if __name__ == '__main__':
+    sys.stdin.readline()
+    xml = sys.stdin.read()
+    tree = etree.ElementTree(etree.fromstring(xml))
+    root = tree.getroot()
+    print(get_attr_number(root))
+
 #XML2 - Find the Maximum Depth
 
 maxdepth = 0
@@ -1248,6 +1326,15 @@ def depth(elem, level):
     if(len(elem)>0):
         for i in elem:
             depth(i, level+1)
+            
+if __name__ == '__main__':
+    n = int(input())
+    xml = ""
+    for i in range(n):
+        xml =  xml + input() + "\n"
+    tree = etree.ElementTree(etree.fromstring(xml))
+    depth(tree.getroot(), -1)
+    print(maxdepth)
 
 #--->Closures and Decorations
 
@@ -1264,6 +1351,14 @@ def wrapper(f):
         f(j for j in my_agenda)
     return fun
 
+@wrapper
+def sort_phone(l):
+    print(*sorted(l), sep='\n')
+
+if __name__ == '__main__':
+    l = [input() for _ in range(int(input()))]
+    sort_phone(l) 
+
 #Decorators 2 - Name Directory
 
 def person_lister(f):
@@ -1272,12 +1367,24 @@ def person_lister(f):
         return (f(j) for j in my_ordered_list)  #"f(i)" notation found from discuss
     return inner
 
+@person_lister
+def name_format(person):
+    return ("Mr. " if person[3] == "M" else "Ms. ") + person[0] + " " + person[1]
+
+if __name__ == '__main__':
+    people = [input().split() for i in range(int(input()))]
+    print(*name_format(people), sep='\n')
+
 #--->Numpy
 
 #Arrays
 
 def arrays(arr):
     return numpy.array(list(reversed(arr)), float)
+
+arr = input().strip().split(' ')
+result = arrays(arr)
+print(result)
 
 #Shape and Reshape
 
